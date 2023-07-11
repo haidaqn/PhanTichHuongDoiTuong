@@ -10,7 +10,7 @@ let admin = {
     orders: [
         {
             code: '1887908',
-            date: '19/02/2023',
+            date: '11/07/2023',
             priceTotal: 1978000,
             order: [
                 { name: 'MONOGRAM CARDIGAN', price: '400000₫', quantity: '1' },
@@ -26,7 +26,7 @@ let admin = {
         },
         {
             code: '8787375',
-            date: '20/02/2023',
+            date: '20/07/2023',
             priceTotal: 440000,
             order: [
                 { name: 'HIGHER-UP PANT', price: '250000₫', quantity: '1' },
@@ -52,11 +52,11 @@ let admin = {
                 { name: 'LORRYLOAD CARGO SHORT', price: '220000₫', quantity: '1' },
                 { name: 'INFERIO SHORT', price: '356000₫', quantity: '1' }
             ],
-            date: '20/02/2023'
+            date: '20/09/2023'
         },
         {
             code: '8345872',
-            date: '20/02/2023',
+            date: '20/10/2023',
             priceTotal: 2457000,
             order: [
                 { name: 'ENERGETIC PANT', price: '190000₫', quantity: '2' },
@@ -74,7 +74,7 @@ let admin = {
         },
         {
             code: '5211745',
-            date: '20/02/2023',
+            date: '04/11/2023',
             priceTotal: 380000,
             order: [{ name: 'ENERGETIC PANT', price: '190000₫', quantity: '2' }],
             infor: {
@@ -86,7 +86,7 @@ let admin = {
         },
         {
             code: '5870764',
-            date: '20/02/2023',
+            date: '20/11/2023',
             priceTotal: 560000,
             order: [{ name: 'CARREAUX HOODIE', price: '280000₫', quantity: '2' }],
             infor: {
@@ -98,7 +98,7 @@ let admin = {
         },
         {
             code: '3351887',
-            date: '20/02/2023',
+            date: '20/12/2023',
             priceTotal: 920000,
             order: [
                 { name: 'ENERGETIC PANT', price: '200000₫', quantity: '2' },
@@ -113,7 +113,7 @@ let admin = {
         },
         {
             code: '7659911',
-            date: '21/02/2023',
+            date: '21/12/2023',
             priceTotal: 776000,
             order: [
                 { name: 'ENERGETIC PANT', price: '200000₫', quantity: '1' },
@@ -699,15 +699,14 @@ close_your_bag.addEventListener('click', closeBag);
 var price_total = $('.price-total-text');
 var listen_buy = $$('.product-buy-btn');
 var product_list = $('.your-list');
-function changePrice(price) {
-    var length = price.length;
-    if (length < 7) return price;
-    var arr = price.split('');
-    for (var i = 1; i < length / 3; i++) {
-        arr.splice(length - 3 * i, 0, '.');
-    }
-    return arr.join('');
-}
+
+// format price
+const handlePrice = (price) => {
+    return new Intl.NumberFormat('de-DE', {
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 0
+    }).format(price);
+};
 var quality_change;
 function addEventBuyBtn(e) {
     var parent_product = e.target.parentElement;
@@ -790,7 +789,8 @@ function change_product() {
         total += price.slice(0, price.length - 1) * quantities;
     }
     if (+discount) total = (total * (100 - +discount)) / 100;
-    price_total.textContent = changePrice(total + '') + '₫';
+    total = total.toLocaleString('vi-VN');
+    price_total.textContent = total + '₫';
     return total;
 }
 function reRenderQuantity(list_buy) {
@@ -1038,7 +1038,7 @@ option_report.forEach((element, index) => {
                 .map((item) => {
                     return `
               <span>${text}: ${item.day}</span>
-              <span>Tổng tiền: ${item.total_price}</span>
+              <span>Tổng tiền: ${handlePrice(item.total_price)}đ</span>
               <span>Số lượng: ${item.quantity}</span>
               <br/>
             `;
@@ -1050,7 +1050,7 @@ option_report.forEach((element, index) => {
             text = 'Năm';
             wrapper.innerHTML = `
         <span>${text}: ${result.day}</span>
-        <span>Tổng tiền: ${result.total_price}</span>
+        <span>Tổng tiền: ${handlePrice(result.total_price)}đ</span>
         <span>Số lượng: ${result.quantity}</span>
         <br/>
       `;

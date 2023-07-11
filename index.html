@@ -24,7 +24,8 @@
         <title>NEW FASHION</title>
     </head>
     <body>
-        <div id="overlay"></div>
+        <div class="main">
+            <div id="overlay"></div>
         <div id="toast"></div>
         <div class="wrap-form">
             <form action="" method="POST" class="form" id="form-2">
@@ -370,6 +371,12 @@
                 <div class="btn">Buy Now</div>
             </div>
         </div>
+        <div class="scroll-top" id="scrollButton">
+            <a href="#">
+                <span>></span>
+            </a>
+        </div>
+        </div>
 
         <script>
             let Yscroll = document.querySelector('body');
@@ -381,6 +388,15 @@
                     header.style.backgroundColor = 'transparent';
                 }
             };
+            window.addEventListener('scroll', function() {
+            var scrollButton = document.getElementById('scrollButton');
+                if (window.pageYOffset > 250) scrollButton.classList.add('show');
+                else scrollButton.classList.remove('show');
+            });
+
+            function scrollToTop() {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
         </script>
         <script src="./js/main.js"></script>
     </body>

@@ -11,6 +11,7 @@ body{
     position: relative;
     overflow-x: hidden;
 }
+
 :root{
     --text-color:rgb(95, 87, 87,0.5);
     --primary-color:rgb(208, 16, 38);
@@ -20,6 +21,10 @@ body{
 }
 a{
     color:  #272727;
+}
+
+.main {
+    position: relative;
 }
 /* .messenger{
     position: absolute;
@@ -731,6 +736,7 @@ html *::-webkit-scrollbar-track {
     font-size: 2.4rem;
     margin-left: 20px;
     display: inline-block;
+    cursor: pointer;
     position: relative;
 }
 /* .icon-check:hover{
@@ -745,6 +751,7 @@ html *::-webkit-scrollbar-track {
     display: none;
     text-align: center;
     margin: 100px;
+    
 }
 .report h2{
     font-size: 2.8rem;
@@ -757,6 +764,7 @@ html *::-webkit-scrollbar-track {
     width: 124px;
     height: 42px;
     display: inline-flex;
+    gap: 16px;
     justify-content: center;
     position: relative;
     align-items: center;
@@ -777,4 +785,37 @@ html *::-webkit-scrollbar-track {
     position: relative;
     top:200px;
     font-size: 5rem;
+}
+
+#scrollBUtton {
+    width: 60px;
+    height: 60px;
+}
+
+#scrollButton > a {
+    position: fixed ;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    display: none;
+    background-color: red;
+    border-radius: 50%;
+    transform: rotate(270deg);
+}
+
+#scrollButton.show > a{
+    display: flex;
+    justify-items: center;
+    align-items: center;
+}
+#scrollButton > a > span {
+    font-size: 50px;
+    color: white;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 16px;
 }
