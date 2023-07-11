@@ -697,6 +697,7 @@ function closeBag() {
 var close_your_bag = $('.close-nav');
 close_your_bag.addEventListener('click', closeBag);
 var price_total = $('.price-total-text');
+var price_total_ships = $('.price-total-text-ships');
 var listen_buy = $$('.product-buy-btn');
 var product_list = $('.your-list');
 
@@ -791,6 +792,7 @@ function change_product() {
     if (+discount) total = (total * (100 - +discount)) / 100;
     total = total.toLocaleString('vi-VN');
     price_total.textContent = total + '₫';
+    price_total_ships.textContent = handlePrice(parseInt(total.replace(/\./g, '')) * 0.05) + '₫';
     return total;
 }
 function reRenderQuantity(list_buy) {
@@ -900,6 +902,9 @@ function randomCodeOrders() {
     }
     return s;
 }
+
+//   price_total_ships.textContent = Math.round(total * 0.1) + '₫';
+
 //Xu li don hang da xu li cua admin
 let adminBag = $('.admin-bag');
 adminBag.addEventListener('click', () => {
