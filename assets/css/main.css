@@ -121,6 +121,9 @@ a{
 .container{
     /* display: none; */
 }
+.container .slide .img-center{
+    /* display: none; */
+}
 .slide{
     position: relative;
 }
