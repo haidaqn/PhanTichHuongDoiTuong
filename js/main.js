@@ -774,6 +774,13 @@ function add_product(parent_product) {
         `;
     product_list.append(product_add);
 }
+var discount;
+var selectElement = document.getElementById('coupon-select');
+selectElement.addEventListener('change', () => {
+    discount = selectElement.value;
+    change_product();
+});
+
 function change_product() {
     var your_bag_info = $$('.your-product');
     var total = 0;
@@ -782,6 +789,7 @@ function change_product() {
         var quantities = your_bag_info[i].querySelector('.quantities').value;
         total += price.slice(0, price.length - 1) * quantities;
     }
+    if (+discount) total = (total * (100 - +discount)) / 100;
     price_total.textContent = changePrice(total + '') + '₫';
     return total;
 }

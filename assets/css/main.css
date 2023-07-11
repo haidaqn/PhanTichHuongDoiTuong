@@ -417,14 +417,29 @@ a{
 }
 .price-total{
     margin: 8px;
-    float:right ;  
     font-size: 1.6rem;
     font-weight: 500;
 }
 .price-total-text{
     color: var(--text-color);
-
 }
+
+.mt-5 {
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.coupon {
+    display: flex;
+}
+
+.coupon-title {
+    font-size: 16px;
+    margin-left: 8px;
+}
+
 .btn{
     background-color: var(--primary-color);
     color: #fff;
