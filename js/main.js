@@ -1001,7 +1001,7 @@ function getPrice(index, start, end) {
         } else {
             day = admin.orders[i].date.slice(start, end);
         }
-        admin.orders[i].order.forEach((item) => {
+        admin.orders[i]?.order?.forEach((item) => {
             quantity_total += Number(item.quantity);
         });
         for (let j = i + 1; j < admin.orders.length; j++) {
